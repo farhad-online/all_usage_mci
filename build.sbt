@@ -11,7 +11,8 @@ val log4jVersion = "2.21.1"
 
 lazy val root = (project in file("."))
   .settings(
-    name := moduleName
+    name := moduleName,
+    idePackagePrefix := Some("bigdata.dwbi.mci")
   )
 
 ThisBuild / packageBin / artifactName := { (sv: ScalaVersion, module: ModuleID, artifact: Artifact) =>

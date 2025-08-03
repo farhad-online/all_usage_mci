@@ -1,10 +1,11 @@
 package bigdata.dwbi.mci
 package core.configs.kafka
 
-import core.configs.{ConfigValidation, CustomOptions}
-import core.logger.Logger
+import bigdata.dwbi.mci.core.configs.{ConfigValidation, CustomOptions}
+import bigdata.dwbi.mci.core.logger.Logger
 
 case class SparkKafkaConsumerConfig(
+                                     format: String,
                                      options: Map[String, String] = Map.empty
                                    ) extends ConfigValidation with CustomOptions[SparkKafkaConsumerConfig] with Logger {
 

@@ -1,17 +1,15 @@
 package bigdata.dwbi.mci
 package core.configs
 
-import core.configs.apps.main.MainAppConfig
-import core.logger.Logger
-import core.configs.hive.HiveConfig
-import core.configs.kafka.SparkKafkaConsumerConfig
-import core.configs.spark.SparkConfig
-import core.configs.apps.subapp.SubAppBaseConfig
-
+import bigdata.dwbi.mci.core.configs.apps.main.MainAppConfig
+import bigdata.dwbi.mci.core.configs.apps.subapp.SubAppBaseConfig
+import bigdata.dwbi.mci.core.configs.hive.SparkHiveConfig
+import bigdata.dwbi.mci.core.configs.kafka.SparkKafkaConsumerConfig
+import bigdata.dwbi.mci.core.configs.spark.SparkConfig
+import bigdata.dwbi.mci.core.logger.Logger
 import com.typesafe.config.{Config, ConfigFactory}
-import scala.collection.JavaConverters.asScalaSetConverter
 
-import scala.util.{Failure, Success, Try}
+import scala.collection.JavaConverters.asScalaSetConverter
 
 object ConfigManager extends Logger {
 
@@ -24,7 +22,7 @@ object ConfigManager extends Logger {
     val appName = config.getString("appName")
     val environment = config.getString("environment")
     val version = config.getString("version")
-    
+
     val subApps = if (config.hasPath("subApps")) {
       config.getConfig("subApps").root().keySet().asScala.map { key =>
         val subAppConfig = config.getConfig(s"subApps.$key")
@@ -33,7 +31,7 @@ object ConfigManager extends Logger {
     } else {
       Map.empty[String, SubAppBaseConfig]
     }
-    
+
     MainAppConfig(appName, environment, version, subApps)
   }
 
@@ -41,57 +39,66 @@ object ConfigManager extends Logger {
     val name = config.getString("name")
     val env = config.getString("env")
     val enabled = if (config.hasPath("enabled")) config.getBoolean("enabled") else false
-    
+
 
     val spark = if (config.hasPath("spark")) {
-     Some(parseSparkConfig(config.getConfig("spark")))
+      Some(parseSparkConfig(config.getConfig("spark")))
     } else None
 
     val sparkKafkaConsumer = if (config.hasPath("sparkKafkaConsumer")) {
       Some(parseSparkKafkaConsumerConfig(config.getConfig("sparkKafkaConsumer")))
     } else None
-    
+
     val hive = if (config.hasPath("hive")) {
-      Some(parseHiveConfig(config.getConfig("hive")))
+      Some(parseSparkHiveConfig(config.getConfig("hive")))
     } else None
-    
+
     val options = if (config.hasPath("options")) {
       parseStringMap(config.getConfig("options"))
     } else Map.empty[String, String]
-    
+
     SubAppBaseConfig(name, env, enabled, spark, sparkKafkaConsumer, hive, options)
   }
 
-  private def parseSparkConfig(config: Config): SparkConfig = {
+  def parseSparkConfig(config: Config): SparkConfig = {
     val appName = config.getString("appName")
     val master = config.getString("master")
-    
+    val checkpointLocation = config.getString("checkpointLocation")
+    val format = config.getString("format")
+    val outputMode = config.getString("outputMode")
+    val batchMode = config.getString("batchMode")
+    val batchFormat = config.getString("batchFormat")
+    val triggerInterval = config.getInt("triggerInterval")
+
     val options = if (config.hasPath("options")) {
       parseStringMap(config.getConfig("options"))
     } else Map.empty[String, String]
-    
-    SparkConfig(appName, master, options)
+
+    SparkConfig(appName, master, checkpointLocation, format, outputMode, batchFormat, batchFormat, triggerInterval, options)
   }
 
-  private def parseSparkKafkaConsumerConfig(config: Config): SparkKafkaConsumerConfig = {
+  def parseSparkKafkaConsumerConfig(config: Config): SparkKafkaConsumerConfig = {
+    val format = config.getString("format")
     val options = if (config.hasPath("options")) {
       parseStringMap(config.getConfig("options"))
     } else Map.empty[String, String]
-    
-    SparkKafkaConsumerConfig(options)
+
+    SparkKafkaConsumerConfig(format, options)
   }
 
-  private def parseHiveConfig(config: Config): HiveConfig = {
+  def parseSparkHiveConfig(config: Config): SparkHiveConfig = {
+    val tableName = config.getString("tableName")
+    val partitionKey = config.getString("partitionKey")
     val options = if (config.hasPath("options")) {
       parseStringMap(config.getConfig("options"))
     } else Map.empty[String, String]
-    
-    HiveConfig(options)
+
+    SparkHiveConfig(tableName, partitionKey, options)
   }
 
-  private def parseStringMap(config: Config): Map[String, String] = {
+  def parseStringMap(config: Config): Map[String, String] = {
     config.entrySet().asScala.map { entry =>
-    entry.getKey -> entry.getValue.unwrapped().toString
+      entry.getKey -> entry.getValue.unwrapped().toString
     }.toMap
   }
 }

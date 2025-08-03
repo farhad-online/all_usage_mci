@@ -8,9 +8,7 @@ import core.configs.ConfigValidation
 
 case class MainAppConfig(
                           appName: String,
-                          environment: String,
-                          version: String,
-                          subApps: Map[String, SubAppBaseConfig] = Map.empty
+                          allUsage: Map[String, SubAppBaseConfig] = Map.empty
                         ) extends ConfigValidation with Logger {
 
   override def validate(): Either[List[String], Unit] = {

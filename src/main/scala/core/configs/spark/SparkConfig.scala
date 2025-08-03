@@ -1,16 +1,20 @@
 package bigdata.dwbi.mci
 package core.configs.spark
 
-import core.configs.{ConfigValidation, CustomOptions}
-import core.logger.Logger
-
+import bigdata.dwbi.mci.core.configs.{ConfigValidation, CustomOptions}
+import bigdata.dwbi.mci.core.logger.Logger
 import org.apache.spark.sql.SparkSession
-
 
 
 case class SparkConfig(
                         appName: String,
                         master: String,
+                        checkpointLocation: String,
+                        outputMode: String,
+                        batchMode: String,
+                        batchFormat: String,
+                        format: String,
+                        triggerInterval: Int,
                         options: Map[String, String] = Map.empty,
                       ) extends ConfigValidation with CustomOptions[SparkConfig] with Logger {
 

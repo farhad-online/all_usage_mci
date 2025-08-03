@@ -1,12 +1,23 @@
 package bigdata.dwbi.mci
 package jobs.allusage.network_switch.etl
 
-object ETLNetworkSwitch {
-  def main(): Unit = {
-    // spark session
-    // kafka
-    // processor.transform()
-    // hive
+import bigdata.dwbi.mci.core.connectors.hive.HiveSink
+import bigdata.dwbi.mci.core.connectors.kafka.KafkaSource
+import bigdata.dwbi.mci.core.logger.Logger
+import bigdata.dwbi.mci.jobs.allusage.network_switch.NetworkSwitchConfig
+import bigdata.dwbi.mci.jobs.allusage.network_switch.etl.transformers.TransformNetworkSwitch
+
+object ETLNetworkSwitch extends Logger {
+  def run(): Unit = {
+    val kafkaSource = new KafkaSource()
+    val hiveSink = new HiveSink()
+    val spark = networkSwitchConfig.spark.getSparkConfig
+      .enableHiveSupport()
+      .getOrCreate()
+
+    val input = kafkaSource.getKafkaSource(spark, networkSwitchConfig.sparkKafkaConsumer)
+    val processedData = TransformNetworkSwitch.process(input)
+    hiveSink.hiveSink(processedData, networkSwitchConfig.sparkHive, networkSwitchConfig.spark)
   }
 
 }

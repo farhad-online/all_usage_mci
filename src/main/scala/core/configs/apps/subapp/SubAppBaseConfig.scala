@@ -1,22 +1,22 @@
 package bigdata.dwbi.mci
 package core.configs.apps.subapp
 
-import core.configs.hive.HiveConfig
-import core.configs.kafka.SparkKafkaConsumerConfig
-import core.configs.spark.SparkConfig
-import core.configs.{ConfigValidation, CustomOptions}
-import core.logger.Logger
+import bigdata.dwbi.mci.core.configs.hive.SparkHiveConfig
+import bigdata.dwbi.mci.core.configs.kafka.SparkKafkaConsumerConfig
+import bigdata.dwbi.mci.core.configs.spark.SparkConfig
 
-case class SubAppBaseConfig(
-                             name: String,
-                             env: String,
-                             enabled: Boolean = false,
-                             spark: Option[SparkConfig] = None,
-                             sparkKafkaConsumer: Option[SparkKafkaConsumerConfig] = None,
-                             hive: Option[HiveConfig] = None,
-                             options: Map[String, String] = Map.empty
-                           ) extends ConfigValidation with CustomOptions[SubAppBaseConfig] with Logger {
-  override def validate(): Either[List[String], Unit] = {
-    Right(())
-  }
+sealed trait SubAppBaseConfig {
+  def name: String
+
+  def env: String
+
+  def enabled: Boolean
+
+  def spark: SparkConfig
+
+  def sparkKafkaConsumer: SparkKafkaConsumerConfig
+
+  def sparkHive: SparkHiveConfig
+
+  def options: Map[String, String] = Map.empty
 }
