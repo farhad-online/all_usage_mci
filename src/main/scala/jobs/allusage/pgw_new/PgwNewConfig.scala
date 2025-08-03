@@ -5,29 +5,15 @@ import bigdata.dwbi.mci.core.configs.ConfigManager
 import bigdata.dwbi.mci.core.configs.hive.SparkHiveConfig
 import bigdata.dwbi.mci.core.configs.kafka.SparkKafkaConsumerConfig
 import bigdata.dwbi.mci.core.configs.spark.SparkConfig
-import com.typesafe.config.Config
+import bigdata.dwbi.mci.jobs.allusage.network_switch.NetworkSwitchConfig.config
 
 object PgwNewConfig {
+  private val configPrefix: String = "all_usage.pgw_new"
 
-  case class PgwNewConfig(
-                                  name: String,
-                                  env: String,
-                                  enabled: Boolean,
-                                  spark: SparkConfig,
-                                  sparkKafkaConsumer: SparkKafkaConsumerConfig,
-                                  sparkHive: SparkHiveConfig,
-                                  options: Map[String, String] = Map.empty
-                                )
-
-  def loadConfig(config: Config): PgwNewConfig = {
-    val name = config.getString("name")
-    val env = config.getString("env")
-    val enabled = config.getBoolean("enabled")
-    val spark = ConfigManager.parseSparkConfig(config.getConfig("spark"))
-    val sparkKafkaConsumer = ConfigManager.parseSparkKafkaConsumerConfig(config.getConfig("sparkKafkaConsumer"))
-    val sparkHive = ConfigManager.parseSparkHiveConfig(config.getConfig("sparkHive"))
-    val options = ConfigManager.parseStringMap(config.getConfig("options"))
-
-    PgwNewConfig(name, env, enabled, spark, sparkKafkaConsumer, sparkHive, options)
-  }
+  lazy val name: String = config getString s"${configPrefix}.name"
+  lazy val env: String = config getString s"${configPrefix}.env"
+  lazy val enable: Boolean = config getBoolean s"${configPrefix}.enable"
+  lazy val spark: SparkConfig = ConfigManager.parseSparkConfig(config.getConfig(s"${configPrefix}.spark"))
+  lazy val sparkKafkaConsumer: SparkKafkaConsumerConfig = ConfigManager.parseSparkKafkaConsumerConfig(config.getConfig(s"${configPrefix}.sparkKafkaConsumer"))
+  lazy val sparkHive: SparkHiveConfig = ConfigManager.parseSparkHiveConfig(config.getConfig(s"${configPrefix}.sparkHive"))
 }

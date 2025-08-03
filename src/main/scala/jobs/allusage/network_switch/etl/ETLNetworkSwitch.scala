@@ -11,13 +11,13 @@ object ETLNetworkSwitch extends Logger {
   def run(): Unit = {
     val kafkaSource = new KafkaSource()
     val hiveSink = new HiveSink()
-    val spark = networkSwitchConfig.spark.getSparkConfig
+    val spark = NetworkSwitchConfig.spark.getSparkConfig
       .enableHiveSupport()
       .getOrCreate()
 
-    val input = kafkaSource.getKafkaSource(spark, networkSwitchConfig.sparkKafkaConsumer)
+    val input = kafkaSource.getKafkaSource(spark, NetworkSwitchConfig.sparkKafkaConsumer)
     val processedData = TransformNetworkSwitch.process(input)
-    hiveSink.hiveSink(processedData, networkSwitchConfig.sparkHive, networkSwitchConfig.spark)
+    hiveSink.hiveSink(processedData, NetworkSwitchConfig.sparkHive, NetworkSwitchConfig.spark)
   }
 
 }

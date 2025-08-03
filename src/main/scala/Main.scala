@@ -3,13 +3,9 @@ package bigdata.dwbi.mci
 import bigdata.dwbi.mci.core.logger.Logger
 import bigdata.dwbi.mci.jobs.allusage.cbs.etl.ETLCBS
 import bigdata.dwbi.mci.jobs.allusage.network_switch.etl.ETLNetworkSwitch
-import core.configs.ConfigManager
 
 object Main extends Logger {
   def main(args: Array[String]): Unit = {
-  val config = ConfigManager.loadConfig() 
-  println(config)
-
     val jobName = args(0)
     jobName match {
       case "all_usage_network_switch" =>
