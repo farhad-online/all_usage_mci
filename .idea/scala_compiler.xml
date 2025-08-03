@@ -2,6 +2,6 @@
 <project version="4">
   <component name="ScalaCompilerConfiguration">
     <option name="separateProdTestSources" value="true" />
-    <profile name="sbt 1" modules="spark_template,spark_template.main,spark_template.test" />
+    <profile name="sbt 1" modules="all_usage,all_usage.main,all_usage.test,spark_template,spark_template.main,spark_template.test" />
   </component>
 </project>

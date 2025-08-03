@@ -1,7 +1,7 @@
 ThisBuild / version := "0.0.1"
 ThisBuild / scalaVersion := "2.12.15"
 
-val moduleName = "spark_template"
+val moduleName = "all_usage"
 val postgresVersion = "42.2.27"
 val hadoopVersion = "3.3.5"
 val sparkVersion = "3.2.3"
