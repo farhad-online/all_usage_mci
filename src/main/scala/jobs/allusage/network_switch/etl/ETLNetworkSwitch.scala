@@ -19,5 +19,4 @@ object ETLNetworkSwitch extends Logger {
     val processedData = TransformNetworkSwitch.process(input)
     hiveSink.hiveSink(processedData, NetworkSwitchConfig.sparkHive, NetworkSwitchConfig.spark)
   }
-
 }

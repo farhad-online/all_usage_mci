@@ -661,3 +661,120 @@ org.apache.spark.SparkException: Could not parse Master URL: 'yarn'
 2025-08-04 07:58:32.751 [sbt-bg-threads-41] WARN  org.apache.spark.metrics.MetricsSystem - Stopping a MetricsSystem that is not running
 2025-08-04 07:58:32.752 [dispatcher-event-loop-0] INFO  org.apache.spark.scheduler.OutputCommitCoordinator$OutputCommitCoordinatorEndpoint - OutputCommitCoordinator stopped!
 2025-08-04 07:58:32.766 [sbt-bg-threads-41] INFO  org.apache.spark.SparkContext - Successfully stopped SparkContext
+2025-08-04 13:15:36.471 [sbt-bg-threads-43] INFO  bigdata.dwbi.mci.Main$ - Starting running Job
+2025-08-04 13:15:36.582 [sbt-bg-threads-43] INFO  org.apache.hadoop.hive.conf.HiveConf - Found configuration file null
+2025-08-04 13:15:36.788 [sbt-bg-threads-43] INFO  org.apache.spark.SparkContext - Running Spark version 3.2.3
+2025-08-04 13:15:36.890 [sbt-bg-threads-43] WARN  org.apache.hadoop.util.NativeCodeLoader - Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2025-08-04 13:15:36.914 [sbt-bg-threads-43] INFO  org.apache.spark.resource.ResourceUtils - ==============================================================
+2025-08-04 13:15:36.915 [sbt-bg-threads-43] INFO  org.apache.spark.resource.ResourceUtils - No custom resources configured for spark.driver.
+2025-08-04 13:15:36.915 [sbt-bg-threads-43] INFO  org.apache.spark.resource.ResourceUtils - ==============================================================
+2025-08-04 13:15:36.915 [sbt-bg-threads-43] INFO  org.apache.spark.SparkContext - Submitted application: ods_all_usage_network_switch
+2025-08-04 13:15:36.927 [sbt-bg-threads-43] INFO  org.apache.spark.resource.ResourceProfile - Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+2025-08-04 13:15:36.928 [sbt-bg-threads-43] INFO  org.apache.spark.resource.ResourceProfile - Limiting resource is cpus at 1 tasks per executor
+2025-08-04 13:15:36.929 [sbt-bg-threads-43] INFO  org.apache.spark.resource.ResourceProfileManager - Added ResourceProfile id: 0
+2025-08-04 13:15:36.958 [sbt-bg-threads-43] INFO  org.apache.spark.SecurityManager - Changing view acls to: root
+2025-08-04 13:15:36.959 [sbt-bg-threads-43] INFO  org.apache.spark.SecurityManager - Changing modify acls to: root
+2025-08-04 13:15:36.959 [sbt-bg-threads-43] INFO  org.apache.spark.SecurityManager - Changing view acls groups to: 
+2025-08-04 13:15:36.959 [sbt-bg-threads-43] INFO  org.apache.spark.SecurityManager - Changing modify acls groups to: 
+2025-08-04 13:15:36.959 [sbt-bg-threads-43] INFO  org.apache.spark.SecurityManager - SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(root); groups with view permissions: Set(); users  with modify permissions: Set(root); groups with modify permissions: Set()
+2025-08-04 13:15:37.113 [sbt-bg-threads-43] INFO  org.apache.spark.util.Utils - Successfully started service 'sparkDriver' on port 40937.
+2025-08-04 13:15:37.129 [sbt-bg-threads-43] INFO  org.apache.spark.SparkEnv - Registering MapOutputTracker
+2025-08-04 13:15:37.155 [sbt-bg-threads-43] INFO  org.apache.spark.SparkEnv - Registering BlockManagerMaster
+2025-08-04 13:15:37.168 [sbt-bg-threads-43] INFO  org.apache.spark.storage.BlockManagerMasterEndpoint - Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+2025-08-04 13:15:37.169 [sbt-bg-threads-43] INFO  org.apache.spark.storage.BlockManagerMasterEndpoint - BlockManagerMasterEndpoint up
+2025-08-04 13:15:37.187 [sbt-bg-threads-43] INFO  org.apache.spark.SparkEnv - Registering BlockManagerMasterHeartbeat
+2025-08-04 13:15:37.203 [sbt-bg-threads-43] INFO  org.apache.spark.storage.DiskBlockManager - Created local directory at /tmp/blockmgr-ef8974bb-9f4a-44c4-b3b2-cffe1135d693
+2025-08-04 13:15:37.221 [sbt-bg-threads-43] INFO  org.apache.spark.storage.memory.MemoryStore - MemoryStore started with capacity 366.3 MiB
+2025-08-04 13:15:37.241 [sbt-bg-threads-43] INFO  org.apache.spark.SparkEnv - Registering OutputCommitCoordinator
+2025-08-04 13:15:37.300 [sbt-bg-threads-43] INFO  org.sparkproject.jetty.util.log - Logging initialized @78938968ms to org.sparkproject.jetty.util.log.Slf4jLog
+2025-08-04 13:15:37.339 [sbt-bg-threads-43] INFO  org.sparkproject.jetty.server.Server - jetty-9.4.44.v20210927; built: 2021-09-27T23:02:44.612Z; git: 8da83308eeca865e495e53ef315a249d63ba9332; jvm 1.8.0_452-b09
+2025-08-04 13:15:37.350 [sbt-bg-threads-43] INFO  org.sparkproject.jetty.server.Server - Started @78939019ms
+2025-08-04 13:15:37.369 [sbt-bg-threads-43] INFO  org.sparkproject.jetty.server.AbstractConnector - Started ServerConnector@76d38883{HTTP/1.1, (http/1.1)}{0.0.0.0:4040}
+2025-08-04 13:15:37.369 [sbt-bg-threads-43] INFO  org.apache.spark.util.Utils - Successfully started service 'SparkUI' on port 4040.
+2025-08-04 13:15:37.382 [sbt-bg-threads-43] INFO  org.sparkproject.jetty.server.handler.ContextHandler - Started o.s.j.s.ServletContextHandler@55650c1{/jobs,null,AVAILABLE,@Spark}
+2025-08-04 13:15:37.384 [sbt-bg-threads-43] INFO  org.sparkproject.jetty.server.handler.ContextHandler - Started o.s.j.s.ServletContextHandler@2e8a4605{/jobs/json,null,AVAILABLE,@Spark}
+2025-08-04 13:15:37.384 [sbt-bg-threads-43] INFO  org.sparkproject.jetty.server.handler.ContextHandler - Started o.s.j.s.ServletContextHandler@79e95b{/jobs/job,null,AVAILABLE,@Spark}
+2025-08-04 13:15:37.384 [sbt-bg-threads-43] INFO  org.sparkproject.jetty.server.handler.ContextHandler - Started o.s.j.s.ServletContextHandler@599ac3a7{/jobs/job/json,null,AVAILABLE,@Spark}
+2025-08-04 13:15:37.385 [sbt-bg-threads-43] INFO  org.sparkproject.jetty.server.handler.ContextHandler - Started o.s.j.s.ServletContextHandler@7bcb30fc{/stages,null,AVAILABLE,@Spark}
+2025-08-04 13:15:37.385 [sbt-bg-threads-43] INFO  org.sparkproject.jetty.server.handler.ContextHandler - Started o.s.j.s.ServletContextHandler@31c1b8cc{/stages/json,null,AVAILABLE,@Spark}
+2025-08-04 13:15:37.386 [sbt-bg-threads-43] INFO  org.sparkproject.jetty.server.handler.ContextHandler - Started o.s.j.s.ServletContextHandler@1e351667{/stages/stage,null,AVAILABLE,@Spark}
+2025-08-04 13:15:37.386 [sbt-bg-threads-43] INFO  org.sparkproject.jetty.server.handler.ContextHandler - Started o.s.j.s.ServletContextHandler@448132b{/stages/stage/json,null,AVAILABLE,@Spark}
+2025-08-04 13:15:37.387 [sbt-bg-threads-43] INFO  org.sparkproject.jetty.server.handler.ContextHandler - Started o.s.j.s.ServletContextHandler@6687c79b{/stages/pool,null,AVAILABLE,@Spark}
+2025-08-04 13:15:37.387 [sbt-bg-threads-43] INFO  org.sparkproject.jetty.server.handler.ContextHandler - Started o.s.j.s.ServletContextHandler@557487ff{/stages/pool/json,null,AVAILABLE,@Spark}
+2025-08-04 13:15:37.388 [sbt-bg-threads-43] INFO  org.sparkproject.jetty.server.handler.ContextHandler - Started o.s.j.s.ServletContextHandler@1817bb40{/storage,null,AVAILABLE,@Spark}
+2025-08-04 13:15:37.388 [sbt-bg-threads-43] INFO  org.sparkproject.jetty.server.handler.ContextHandler - Started o.s.j.s.ServletContextHandler@70a89744{/storage/json,null,AVAILABLE,@Spark}
+2025-08-04 13:15:37.388 [sbt-bg-threads-43] INFO  org.sparkproject.jetty.server.handler.ContextHandler - Started o.s.j.s.ServletContextHandler@356a70b7{/storage/rdd,null,AVAILABLE,@Spark}
+2025-08-04 13:15:37.389 [sbt-bg-threads-43] INFO  org.sparkproject.jetty.server.handler.ContextHandler - Started o.s.j.s.ServletContextHandler@155559a2{/storage/rdd/json,null,AVAILABLE,@Spark}
+2025-08-04 13:15:37.389 [sbt-bg-threads-43] INFO  org.sparkproject.jetty.server.handler.ContextHandler - Started o.s.j.s.ServletContextHandler@737c3af1{/environment,null,AVAILABLE,@Spark}
+2025-08-04 13:15:37.390 [sbt-bg-threads-43] INFO  org.sparkproject.jetty.server.handler.ContextHandler - Started o.s.j.s.ServletContextHandler@72554c24{/environment/json,null,AVAILABLE,@Spark}
+2025-08-04 13:15:37.390 [sbt-bg-threads-43] INFO  org.sparkproject.jetty.server.handler.ContextHandler - Started o.s.j.s.ServletContextHandler@5d5d51ee{/executors,null,AVAILABLE,@Spark}
+2025-08-04 13:15:37.391 [sbt-bg-threads-43] INFO  org.sparkproject.jetty.server.handler.ContextHandler - Started o.s.j.s.ServletContextHandler@5cb9dfea{/executors/json,null,AVAILABLE,@Spark}
+2025-08-04 13:15:37.391 [sbt-bg-threads-43] INFO  org.sparkproject.jetty.server.handler.ContextHandler - Started o.s.j.s.ServletContextHandler@6df869d{/executors/threadDump,null,AVAILABLE,@Spark}
+2025-08-04 13:15:37.392 [sbt-bg-threads-43] INFO  org.sparkproject.jetty.server.handler.ContextHandler - Started o.s.j.s.ServletContextHandler@3c4ff18f{/executors/threadDump/json,null,AVAILABLE,@Spark}
+2025-08-04 13:15:37.397 [sbt-bg-threads-43] INFO  org.sparkproject.jetty.server.handler.ContextHandler - Started o.s.j.s.ServletContextHandler@249d920a{/static,null,AVAILABLE,@Spark}
+2025-08-04 13:15:37.398 [sbt-bg-threads-43] INFO  org.sparkproject.jetty.server.handler.ContextHandler - Started o.s.j.s.ServletContextHandler@515b8b8d{/,null,AVAILABLE,@Spark}
+2025-08-04 13:15:37.399 [sbt-bg-threads-43] INFO  org.sparkproject.jetty.server.handler.ContextHandler - Started o.s.j.s.ServletContextHandler@f6cd79a{/api,null,AVAILABLE,@Spark}
+2025-08-04 13:15:37.399 [sbt-bg-threads-43] INFO  org.sparkproject.jetty.server.handler.ContextHandler - Started o.s.j.s.ServletContextHandler@2bb5b629{/jobs/job/kill,null,AVAILABLE,@Spark}
+2025-08-04 13:15:37.399 [sbt-bg-threads-43] INFO  org.sparkproject.jetty.server.handler.ContextHandler - Started o.s.j.s.ServletContextHandler@1dc56db7{/stages/stage/kill,null,AVAILABLE,@Spark}
+2025-08-04 13:15:37.400 [sbt-bg-threads-43] INFO  org.apache.spark.ui.SparkUI - Bound SparkUI to 0.0.0.0, and started at http://master.dwbi.mci:4040
+2025-08-04 13:15:37.414 [sbt-bg-threads-43] ERROR org.apache.spark.SparkContext - Error initializing SparkContext.
+org.apache.spark.SparkException: Could not parse Master URL: 'yarn'
+	at org.apache.spark.SparkContext$.org$apache$spark$SparkContext$$createTaskScheduler(SparkContext.scala:2969) ~[spark-core_2.12-3.2.3.jar:3.2.3]
+	at org.apache.spark.SparkContext.<init>(SparkContext.scala:559) ~[spark-core_2.12-3.2.3.jar:3.2.3]
+	at org.apache.spark.SparkContext$.getOrCreate(SparkContext.scala:2690) ~[spark-core_2.12-3.2.3.jar:3.2.3]
+	at org.apache.spark.sql.SparkSession$Builder.$anonfun$getOrCreate$2(SparkSession.scala:949) ~[spark-sql_2.12-3.2.3.jar:3.2.3]
+	at scala.Option.getOrElse(Option.scala:189) ~[scala-library-2.12.15.jar:1.4.4]
+	at org.apache.spark.sql.SparkSession$Builder.getOrCreate(SparkSession.scala:943) ~[spark-sql_2.12-3.2.3.jar:3.2.3]
+	at bigdata.dwbi.mci.jobs.allusage.network_switch.etl.ETLNetworkSwitch$.run(ETLNetworkSwitch.scala:14) ~[all_usage-0.0.1.jar:0.0.1]
+	at bigdata.dwbi.mci.Main$.main(Main.scala:22) ~[all_usage-0.0.1.jar:0.0.1]
+	at bigdata.dwbi.mci.Main.main(Main.scala) ~[all_usage-0.0.1.jar:0.0.1]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_452]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_452]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_452]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_452]
+	at sbt.Run.invokeMain(Run.scala:135) ~[?:?]
+	at sbt.Run.execute$1(Run.scala:85) ~[?:?]
+	at sbt.Run.$anonfun$runWithLoader$5(Run.scala:112) ~[?:?]
+	at sbt.Run$.executeSuccess(Run.scala:178) ~[?:?]
+	at sbt.Run.runWithLoader(Run.scala:112) ~[?:?]
+	at sbt.Defaults$.$anonfun$bgRunTask$6(Defaults.scala:2091) ~[?:?]
+	at sbt.Defaults$.$anonfun$termWrapper$2(Defaults.scala:2030) ~[?:?]
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23) [scala-library.jar:?]
+	at scala.util.Try$.apply(Try.scala:213) [scala-library.jar:1.4.4]
+	at sbt.internal.BackgroundThreadPool$BackgroundRunnable.run(DefaultBackgroundJobService.scala:378) [main_2.12-1.11.3.jar:1.11.3]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_452]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_452]
+	at java.lang.Thread.run(Thread.java:750) [?:1.8.0_452]
+2025-08-04 13:15:37.425 [sbt-bg-threads-43] INFO  org.sparkproject.jetty.server.AbstractConnector - Stopped Spark@76d38883{HTTP/1.1, (http/1.1)}{0.0.0.0:4040}
+2025-08-04 13:15:37.428 [sbt-bg-threads-43] INFO  org.apache.spark.ui.SparkUI - Stopped Spark web UI at http://master.dwbi.mci:4040
+2025-08-04 13:15:37.441 [dispatcher-event-loop-3] INFO  org.apache.spark.MapOutputTrackerMasterEndpoint - MapOutputTrackerMasterEndpoint stopped!
+2025-08-04 13:15:37.447 [sbt-bg-threads-43] INFO  org.apache.spark.storage.memory.MemoryStore - MemoryStore cleared
+2025-08-04 13:15:37.447 [sbt-bg-threads-43] INFO  org.apache.spark.storage.BlockManager - BlockManager stopped
+2025-08-04 13:15:37.453 [sbt-bg-threads-43] INFO  org.apache.spark.storage.BlockManagerMaster - BlockManagerMaster stopped
+2025-08-04 13:15:37.453 [sbt-bg-threads-43] WARN  org.apache.spark.metrics.MetricsSystem - Stopping a MetricsSystem that is not running
+2025-08-04 13:15:37.455 [dispatcher-event-loop-0] INFO  org.apache.spark.scheduler.OutputCommitCoordinator$OutputCommitCoordinatorEndpoint - OutputCommitCoordinator stopped!
+2025-08-04 13:15:37.462 [sbt-bg-threads-43] INFO  org.apache.spark.SparkContext - Successfully stopped SparkContext
+2025-08-04 13:16:00.818 [sbt-bg-threads-45] INFO  bigdata.dwbi.mci.Main$ - Starting running Job
+2025-08-04 13:16:00.823 [sbt-bg-threads-45] ERROR bigdata.dwbi.mci.Main$ - Invalid job name: temp
+2025-08-04 13:16:00.846 [shutdown-hook-0] INFO  org.apache.spark.util.ShutdownHookManager - Shutdown hook called
+2025-08-04 13:16:00.847 [shutdown-hook-0] INFO  org.apache.spark.util.ShutdownHookManager - Deleting directory /tmp/spark-87b70e21-04eb-4695-b2df-73b5d70946e5
+2025-08-04 13:16:00.847 [shutdown-hook-0] INFO  org.apache.spark.util.ShutdownHookManager - Shutdown hook called
+2025-08-04 13:16:00.847 [shutdown-hook-0] INFO  org.apache.spark.util.ShutdownHookManager - Deleting directory /tmp/spark-768af0ff-4e53-4cd7-8ff0-1126253eada9
+2025-08-04 13:16:00.848 [shutdown-hook-0] INFO  org.apache.spark.util.ShutdownHookManager - Shutdown hook called
+2025-08-04 13:16:00.848 [shutdown-hook-0] INFO  org.apache.spark.util.ShutdownHookManager - Deleting directory /tmp/spark-a61c8d74-4bdd-4347-ba5f-9511af5c7e24
+2025-08-04 13:16:00.847 [shutdown-hook-0] INFO  org.apache.spark.util.ShutdownHookManager - Shutdown hook called
+2025-08-04 13:16:00.849 [shutdown-hook-0] INFO  org.apache.spark.util.ShutdownHookManager - Shutdown hook called
+2025-08-04 13:16:00.852 [shutdown-hook-0] INFO  org.apache.spark.util.ShutdownHookManager - Deleting directory /tmp/spark-84842e9e-ed9e-4112-ac30-b94c09fc8330
+2025-08-04 13:16:00.852 [shutdown-hook-0] INFO  org.apache.spark.util.ShutdownHookManager - Deleting directory /tmp/spark-b53e8261-9c3c-4455-a44a-1fd33a54962d
+2025-08-04 13:16:00.852 [shutdown-hook-0] INFO  org.apache.spark.util.ShutdownHookManager - Shutdown hook called
+2025-08-04 13:16:00.853 [shutdown-hook-0] INFO  org.apache.spark.util.ShutdownHookManager - Shutdown hook called
+2025-08-04 13:16:00.853 [shutdown-hook-0] INFO  org.apache.spark.util.ShutdownHookManager - Shutdown hook called
+2025-08-04 13:16:00.855 [shutdown-hook-0] INFO  org.apache.spark.util.ShutdownHookManager - Deleting directory /tmp/spark-788be509-c17d-4557-b58d-aa738a1269fe
+2025-08-04 13:16:00.856 [shutdown-hook-0] INFO  org.apache.spark.util.ShutdownHookManager - Deleting directory /tmp/spark-bbf389f6-589e-4d05-ae64-8d80c4bc7fda
+2025-08-04 13:16:00.856 [shutdown-hook-0] INFO  org.apache.spark.util.ShutdownHookManager - Deleting directory /tmp/spark-27e6e55f-b207-4431-984a-1c2ed44ed400
+2025-08-04 13:16:31.196 [sbt-bg-threads-1] INFO  bigdata.dwbi.mci.Main$ - Starting running Job
+2025-08-04 13:16:31.242 [sbt-bg-threads-1] ERROR bigdata.dwbi.mci.Main$ - Invalid job name: temp
+2025-08-04 13:17:18.256 [sbt-bg-threads-1] INFO  bigdata.dwbi.mci.Main$ - Starting running Job
+2025-08-04 13:17:18.295 [sbt-bg-threads-1] ERROR bigdata.dwbi.mci.Main$ - Invalid job name: temp
+2025-08-04 14:24:53.655 [sbt-bg-threads-3] INFO  bigdata.dwbi.mci.Main$ - Starting running Job
+2025-08-04 14:24:53.659 [sbt-bg-threads-3] ERROR bigdata.dwbi.mci.Main$ - Invalid job name: temp

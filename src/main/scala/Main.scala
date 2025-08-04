@@ -14,7 +14,7 @@ object Main extends Logger {
       ConfigModule.setConfigPath(args(1))
     }
 
-    val jobName = args(0)
+    val jobName = "temp" // args(0)
     logger.debug(s"get argument: jobName: ${jobName}")
     jobName match {
       case "all_usage_network_switch" =>
@@ -28,7 +28,7 @@ object Main extends Logger {
         ETLCBS.run()
       case _ =>
         logger.error(s"Invalid job name: $jobName")
-        System.exit(1)
+        // System.exit(1)
     }
   }
 }
