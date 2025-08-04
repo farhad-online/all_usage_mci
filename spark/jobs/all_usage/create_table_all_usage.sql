@@ -17,10 +17,10 @@ ROW FORMAT SERDE
     'org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe'
 WITH SERDEPROPERTIES (
     'compression' = 'zstd',
-    'path' = 'hdfs:///warehouse/tablespace/managed/hive/all_usage_pz')
+    'path' = 'hdfs:///warehouse/tablespace/managed/hive/all_usage')
 STORED AS PARQUET
 LOCATION
-    'hdfs:///warehouse/tablespace/managed/hive/all_usage_pz'
+    'hdfs:///warehouse/tablespace/managed/hive/all_usagez'
 TBLPROPERTIES (
     'bucketing.version' = '2',
     'spark.sql.create.version' = '3.2.3',

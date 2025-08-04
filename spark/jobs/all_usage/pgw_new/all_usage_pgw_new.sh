@@ -7,7 +7,7 @@ JOB_NAME="all_usage_pgw_new"
 sudo -u spark spark-submit \
         --deploy-mode client \
         --name $JOB_NAME \
-        --jars ${JAR_PATH}/config-1.4.1.jar,./jars/hive-serde-3.1.3.jar,./jars/com.github.luben_zstd-jni-1.4.8-1.jar,./jars/org.apache.commons_commons-pool2-2.6.2.jar,./jars/org.apache.kafka_kafka-clients-2.6.0.jar,./jars/org.apache.spark_spark-sql-kafka-0-10_2.12-3.1.3.jar,./jars/org.apache.spark_spark-token-provider-kafka-0-10_2.12-3.1.3.jar,./jars/org.lz4_lz4-java-1.7.1.jar,./jars/org.slf4j_slf4j-api-1.7.30.jar,./jars/org.spark-project.spark_unused-1.0.0.jar,./jars/org.xerial.snappy_snappy-java-1.1.8.2.jar \
+        --jars ${JAR_PATH}/config-1.4.1.jar,${JAR_PATH}/hive-serde-3.1.3.jar,${JAR_PATH}/com.github.luben_zstd-jni-1.4.8-1.jar,${JAR_PATH}/org.apache.commons_commons-pool2-2.6.2.jar,${JAR_PATH}/org.apache.kafka_kafka-clients-2.6.0.jar,${JAR_PATH}/org.apache.spark_spark-sql-kafka-0-10_2.12-3.1.3.jar,${JAR_PATH}/org.apache.spark_spark-token-provider-kafka-0-10_2.12-3.1.3.jar,${JAR_PATH}/org.lz4_lz4-java-1.7.1.jar,${JAR_PATH}/org.slf4j_slf4j-api-1.7.30.jar,${JAR_PATH}/org.spark-project.spark_unused-1.0.0.jar,${JAR_PATH}/org.xerial.snappy_snappy-java-1.1.8.2.jar,${JAR_PATH}/log4j-core-2.21.1.jar,${JAR_PATH}/log4j-api-2.21.1.jar,${JAR_PATH}/log4j-slf4j-impl-2.21.1.jar \
         --files ${KEYTAB_PATH}/kafka.service.keytab,${CONFIG_PATH}/spark_jaas.conf,${JOB_PATH}/${JOB_NAME}.conf \
         --conf spark.yarn.submit.waitAppCompletion=false \
         --conf spark.security.credentials.hbase.enabled=false \

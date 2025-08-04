@@ -3,6 +3,7 @@ package jobs.allusage.pgw_new.etl
 
 import bigdata.dwbi.mci.core.connectors.hive.HiveSink
 import bigdata.dwbi.mci.core.connectors.kafka.KafkaSource
+import bigdata.dwbi.mci.core.connectors.console.ConsoleSink
 import bigdata.dwbi.mci.core.logger.Logger
 import bigdata.dwbi.mci.jobs.allusage.pgw_new.PgwNewConfig
 import bigdata.dwbi.mci.jobs.allusage.pgw_new.etl.transforms.TransformPgwNew

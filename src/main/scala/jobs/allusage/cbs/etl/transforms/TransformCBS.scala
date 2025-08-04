@@ -10,7 +10,7 @@ object TransformCBS {
   def process(df: DataFrame): DataFrame = {
     df
       .withColumn("split_value", split(col("value"), "|"))
-      .filter(length(col("split_value")).>=(506))
+      .filter(size(col("split_value")).>=(506))
       .select(
         coalesce(trim(col("split_value")(25)), lit("0")).as("a_number"),
         lit("").as("b_number"),

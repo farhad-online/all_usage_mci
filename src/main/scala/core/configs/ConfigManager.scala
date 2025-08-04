@@ -24,7 +24,7 @@ object ConfigManager extends Logger {
       parseStringMap(config.getConfig("options"))
     } else Map.empty[String, String]
 
-    SparkConfig(appName, master, checkpointLocation, format, outputMode, batchMode, batchFormat, triggerInterval, options)
+    SparkConfig(appName, master, checkpointLocation, outputMode, batchMode, batchFormat, format, triggerInterval, options)
   }
 
   def parseSparkKafkaConsumerConfig(config: Config): SparkKafkaConsumerConfig = {

@@ -1,9 +1,8 @@
 package bigdata.dwbi.mci
 package jobs.allusage.pgw_new.etl.transforms
 
-import core.logger.Logger
-import utils.SparkUDF.{getMsLocationPGWUDF, strIntUDF, strLongUDF, toJalaliUDF}
-
+import bigdata.dwbi.mci.core.logger.Logger
+import bigdata.dwbi.mci.utils.SparkUDF.{getMsLocationPGWUDF, strIntUDF, strLongUDF, toJalaliUDF}
 import org.apache.spark.sql.DataFrame
 import org.apache.spark.sql.functions._
 
@@ -11,7 +10,7 @@ object TransformPgwNew extends Logger {
   def process(df: DataFrame): DataFrame = {
     df
       .withColumn("split_value", split(col("value"), "|"))
-      .filter(length(col("split_value")).===(71))
+      .filter(size(col("split_value")).===(71))
       .select(
         trim(col("split_value")(8)).as("a_number"),
         lit("").as("b_number"),
