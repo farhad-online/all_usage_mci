@@ -9,7 +9,6 @@ import jobs.allusage.network_switch.etl.transformers.TransformNetworkSwitch
 
 object ETLNetworkSwitch extends Logger {
   def run(): Unit = {
-    logger.debug(s"network_switch_config: ${NetworkSwitchConfig}")
     val kafkaSource = new KafkaSource()
     val hiveSink = new HiveSink()
     val spark = NetworkSwitchConfig.spark.getSparkConfig

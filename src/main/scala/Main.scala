@@ -5,6 +5,8 @@ import core.logger.Logger
 import jobs.allusage.cbs.etl.ETLCBS
 import jobs.allusage.network_switch.etl.ETLNetworkSwitch
 
+import bigdata.dwbi.mci.jobs.allusage.pgw_new.etl.ETLPgqNew
+
 object Main extends Logger {
   def main(args: Array[String]): Unit = {
     logger.info("Starting running Job")
@@ -20,7 +22,7 @@ object Main extends Logger {
         ETLNetworkSwitch.run()
       case "all_usage_pgw_new" =>
         logger.debug("prerun all_usage_pgw_new")
-        ETLNetworkSwitch.run()
+        ETLPgqNew.run()
       case "all_usage_cbs" =>
         logger.debug("prerun all_usage_cbs")
         ETLCBS.run()
