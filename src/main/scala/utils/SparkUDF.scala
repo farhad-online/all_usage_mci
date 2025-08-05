@@ -3,6 +3,9 @@ package utils
 
 import org.apache.spark.sql.expressions.UserDefinedFunction
 import org.apache.spark.sql.functions.udf
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit
 
 object SparkUDF {
   val toJalaliUDF: UserDefinedFunction = udf((date: String) => {
@@ -92,4 +95,17 @@ object SparkUDF {
       case _: Throwable => "0"
     }
   })
+
+  val getDiffTimeUDF: UserDefinedFunction = udf((beg: String, end: String) => {
+    try {
+      val f = DateTimeFormatter.ofPattern("yyyyMMddHHmmss")
+      val t1 = LocalDateTime.parse(DateConverter.toGeo(beg) + beg.substring(8), f)
+      val t2 = LocalDateTime.parse(DateConverter.toGeo(end) + end.substring(8), f)
+      ChronoUnit.SECONDS.between(t1, t2).toInt
+    }
+    catch {
+      case _: Throwable => 0
+    }
+  }
+  )
 }

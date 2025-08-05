@@ -12,12 +12,17 @@ object ETLPgqNew extends Logger {
   def run(): Unit = {
     val kafkaSource = new KafkaSource()
     val hiveSink = new HiveSink()
+    // val consoleSink = new ConsoleSink()
     val spark = PgwNewConfig.spark.getSparkConfig
       .enableHiveSupport()
       .getOrCreate()
 
     val input = kafkaSource.getKafkaSource(spark, PgwNewConfig.sparkKafkaConsumer)
     val processedData = TransformPgwNew.process(input)
+    //println(s"\n\n\n\n\n\n\n\n\n\n\n\n")
+    //processedData.printSchema()
+    //println(s"\n\n\n\n\n\n\n\n\n\n\n\n")
+    //consoleSink.consoleSink(processedData)
     hiveSink.hiveSink(processedData, PgwNewConfig.sparkHive, PgwNewConfig.spark)
   }
 }
