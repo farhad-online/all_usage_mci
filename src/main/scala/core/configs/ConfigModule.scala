@@ -1,12 +1,12 @@
 package bigdata.dwbi.mci
 package core.configs
 
-import core.logger.Logger
-
+import bigdata.dwbi.mci.core.logger.Logger
 import com.typesafe.config.{Config, ConfigFactory}
+import org.apache.hadoop.conf.Configuration
+import org.apache.hadoop.fs.{FSDataInputStream, FileSystem, Path}
 
-import java.io.File
-
+import java.io.InputStreamReader
 
 object ConfigModule extends Logger {
   trait ConfigModule {
@@ -23,16 +23,13 @@ object ConfigModule extends Logger {
   private lazy val config: Config = {
     configFilePath match {
       case Some(path) =>
-        val configFile = new File(path)
-        if (configFile.exists()) {
-          ConfigFactory.parseFile(configFile)
-            .withFallback(ConfigFactory.load())
-            .withFallback(ConfigFactory.defaultApplication())
-            .resolve()
-        } else {
-          logger.error(s"Config file not fount: $path")
-          throw new RuntimeException(s"Config file not found: $path")
-        }
+        val fs: FileSystem = FileSystem.get(new Configuration())
+        val fsInputStream: FSDataInputStream = fs.open(new Path(path))
+        val reader = new InputStreamReader(fsInputStream)
+        ConfigFactory.parseReader(reader)
+          .withFallback(ConfigFactory.load())
+          .withFallback(ConfigFactory.defaultApplication())
+          .resolve()
       case None =>
         ConfigFactory.load()
           .withFallback(ConfigFactory.defaultApplication())

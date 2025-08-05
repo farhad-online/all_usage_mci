@@ -9,7 +9,7 @@ import org.apache.spark.sql.functions._
 object TransformPgwNew extends Logger {
   def process(df: DataFrame): DataFrame = {
     df
-      .withColumn("split_value", split(col("value"), "|"))
+      .withColumn("split_value", split(col("value"), "\\|"))
       .filter(size(col("split_value")).===(71))
       .select(
         trim(col("split_value")(8)).as("a_number"),

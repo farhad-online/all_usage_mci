@@ -82,19 +82,26 @@ object SparkUDF {
     try {
       if (c.trim.length >= 5) {
         if (c.substring(0, 5) == "43211") {
-          if (c.length == 15)
+          if (c.length == 15) {
             c
-          else
+          }
+          else {
             "43211" + Integer.parseInt(c.substring(5, 5 + 4), 16).toString + (Integer.parseInt(c.substring(9), 16) / 256).toString + (Integer.parseInt(c.substring(9), 16) % 256).toString
+          }
         }
-        else c.substring(0, 5)
+        else {
+          c.substring(0, 5)
+        }
       }
-      "-1"
+      else {
+        "-1"
+      }
     }
     catch {
       case _: Throwable => "0"
     }
-  })
+  }
+  )
 
   val getDiffTimeUDF: UserDefinedFunction = udf((beg: String, end: String) => {
     try {

@@ -3,6 +3,16 @@ KEYTAB_PATH="../../../keytabs"
 CONFIG_PATH="../../../config"
 JOB_PATH="."
 JOB_NAME="all_usage_pgw_new"
+HDFS_BASE_CONFIG_PATH="/user/spark/config"
+HDFS_JOB_CONFIG_PATH="jobs/all_usage/pgw_new"
+HDFS_CONFIG_PATH="${HDFS_BASE_CONFIG_PATH}/${HDFS_JOB_CONFIG_PATH}/${JOB_NAME}.conf"
+
+sudo -u hdfs hdfs dfs -mkdir -p ${HDFS_BASE_CONFIG_PATH}/${HDFS_JOB_CONFIG_PATH}
+sudo -u hdfs hdfs dfs -rm ${HDFS_CONFIG_PATH}
+sudo -u hdfs hdfs dfs -rm ${HDFS_BASE_CONFIG_PATH}/spark_jaas.conf
+sudo -u hdfs hdfs dfs -put ${JOB_PATH}/${JOB_NAME}.conf ${HDFS_CONFIG_PATH}
+sudo -u hdfs hdfs dfs -put ${CONFIG_PATH}/spark_jaas.conf ${HDFS_BASE_CONFIG_PATH}/spark_jaas.conf
+
 
 sudo -u spark spark-submit \
         --deploy-mode client \
@@ -18,4 +28,4 @@ sudo -u spark spark-submit \
         --keytab ${KEYTAB_PATH}/spark.service.keytab \
         --principal spark/master.dwbi.mci@DWBI.MCI \
         --conf spark.yarn.queue=default \
-        ${JOB_NAME}.jar $JOB_NAME ${JOB_PATH}/${JOB_NAME}.conf
+        ${JOB_NAME}.jar ${JOB_NAME} ${HDFS_CONFIG_PATH}

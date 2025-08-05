@@ -9,9 +9,9 @@ import org.apache.spark.sql.types.{IntegerType, LongType}
 object TransformCBS {
   def process(df: DataFrame): DataFrame = {
     df
-      .withColumn("split_value", split(col("value"), "|"))
-      .filter(size(col("split_value")).>=(506))
-      .select(
+    .withColumn("split_value", split(col("value"), "\\|"))
+    .filter(size(col("split_value")).>=(506))
+    .select(
         trim(col("split_value")(25)).as("a_number"),
         lit("").as("b_number"),
         getDiffTimeUDF(col("split_value")(14), col("split_value")(15)).as("duration"),
