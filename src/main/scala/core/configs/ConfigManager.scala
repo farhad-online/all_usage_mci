@@ -46,7 +46,7 @@ object ConfigManager extends Logger {
     SparkHiveConfig(tableName, partitionKey, options)
   }
 
-  def parseStringMap(config: Config): Map[String, String] = {
+  private def parseStringMap(config: Config): Map[String, String] = {
     config.entrySet().asScala.map { entry =>
       entry.getKey -> entry.getValue.unwrapped().toString
     }.toMap
